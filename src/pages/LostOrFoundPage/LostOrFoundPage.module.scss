@@ -1,0 +1,11 @@
+.lost-or-found-page-wrapper :global{
+  border: 1px dashed red;
+  display: flex;
+  justify-content: space-around;
+  .lost-or-found-option{
+    border: 1px solid gray;
+    padding: 100px;
+    margin: 20px;
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,14 @@
+@import "../../css/Colors";
+
+.page-layout-wrapper :global {
+  //max-width: 1920px;
+  margin: 0 auto;
+  //height: 100vh;
+  color: white;
+  .ant-layout-sider{
+    .ant-menu-item, .anticon, a {
+      color: $login-btn!important;
+    }
+  }
+}
+

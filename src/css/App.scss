@@ -1,0 +1,30 @@
+@import "./Colors.scss";
+@import "./AntdOverrides";
+@import "./FlexboxStyles";
+@import "./AntdOverrides";
+@import url('https://fonts.googleapis.com/css2?family=Jura:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+
+body {
+  font-family: 'Jura', sans-serif!important;
+  font-weight: 400;
+  background: $grey;
+}
+
+.App {
+  overflow-scrolling: auto;
+}
+
+@media only screen and (max-width: 600px) {
+  .ant-form {
+    width: 282px;
+  }
+}
+
+.main-page-content{
+  margin-top: 44px;
+  min-height: calc(100vh - 134px);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
