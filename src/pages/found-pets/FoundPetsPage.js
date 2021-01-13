@@ -17,7 +17,16 @@ const FoundPetsPage = () => {
 
   return(
     <div className={style['found-pets-page-wrapper']}>
-            found!
+      <div className='pets-grid'>
+        {
+          foundPets.map((pet, i) => (
+            <div className='pet-item' key={i}>
+              <img src={pet.imageUrl} />
+            </div>
+          ))
+        }
+
+      </div>
     </div>
   );
 };
