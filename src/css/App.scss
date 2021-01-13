@@ -11,8 +11,28 @@ body {
   background: $grey;
 }
 
-.App {
-  overflow-scrolling: auto;
+.app-wrapper {
+  display: flex;
+  justify-content: center;
+  .main-page-content{
+    margin-top: 44px;
+    min-height: calc(100vh - 134px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 1900px;
+    border: 1px solid black;
+    .navigation{
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      border: 1px dashed white;
+      font-size: 25px;
+      font-weight: 600;
+      color: antiquewhite;
+    }
+  }
 }
 
 @media only screen and (max-width: 600px) {
@@ -21,10 +41,4 @@ body {
   }
 }
 
-.main-page-content{
-  margin-top: 44px;
-  min-height: calc(100vh - 134px);
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
+

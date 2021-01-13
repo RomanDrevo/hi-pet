@@ -1,15 +1,16 @@
 import React from 'react';
-import style from './css/App.scss';
-import {connect} from 'react-redux';
+import  './css/App.scss';
+import {connect, useSelector} from 'react-redux';
 import {Route, Switch} from 'react-router-dom';
 import ProtectedRoute from './ProtectedRoute';
 import {capitalizeFirstLetter} from './utils/helpers';
 import ModalWindow from './components/modal-window/ModalWindow';
-import {getErrorObject, getIsErrorWindowOpen} from './store/selectors';
+import {getCurrentScreen, getErrorObject, getIsErrorWindowOpen} from './store/selectors';
 import {toggleErrorWindowIsOpen} from './store/actions/uIStateActions';
-import LostOrFoundPage from './pages/LostOrFoundPage/LostOrFoundPage';
-import CatOrDogPage from './pages/CatOrDogPage/CatOrDogPage';
+import LostOrFoundPage from './pages/lost-or-found-page/LostOrFoundPage';
+import CatOrDogPage from './pages/cat-or-dog-page/CatOrDogPage';
 import FoundPetsPage from './pages/found-pets/FoundPetsPage';
+import Navigation from "./components/navigation/Navigation";
 
 const App = ({isErrorWindowOpen, errorObject, toggleErrorWindowIsOpen}) => {
 
@@ -17,8 +18,10 @@ const App = ({isErrorWindowOpen, errorObject, toggleErrorWindowIsOpen}) => {
     toggleErrorWindowIsOpen();
   };
 
+
+
   return (
-    <div className={style['app-wrapper']}>
+    <div className='app-wrapper'>
       <ModalWindow
         visible={isErrorWindowOpen}
         title={capitalizeFirstLetter(errorObject.title)}
@@ -26,6 +29,10 @@ const App = ({isErrorWindowOpen, errorObject, toggleErrorWindowIsOpen}) => {
         handleErrorModalCancel={handleErrorModalCancel}
       />
       <div className="main-page-content">
+        {/*{*/}
+        {/*  currentScreen && <Navigation currentScreen={currentScreen} />*/}
+        {/*}*/}
+
         <Switch>
           <ProtectedRoute path='/' exact component={LostOrFoundPage}/>
           <ProtectedRoute path='/choose-pet' exact component={CatOrDogPage}/>

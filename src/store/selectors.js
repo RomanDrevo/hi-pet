@@ -8,6 +8,8 @@ export const getNotificationMessage = state => state?.uIStateReducer?.notificati
 
 export const isAuthenticated = state => state.authReducer?.isAuthenticated;
 
+export const getCurrentScreen = state => state.screensReducer?.currentScreen;
+
 export const getFoundPets = state => {
   let petsArr = [];
   const pets = state.petsReducer?.foundPets;
