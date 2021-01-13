@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './css/App.scss';
 import {connect} from 'react-redux';
-import {Route, Switch} from 'react-router-dom';
+import {Switch} from 'react-router-dom';
 import ProtectedRoute from './ProtectedRoute';
 import {capitalizeFirstLetter} from './utils/helpers';
 import ModalWindow from './components/modal-window/ModalWindow';

@@ -11,18 +11,18 @@ import 'antd/dist/antd.css';
 import './css/index.scss';
 
 const
-    composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose,
-    sagaMiddleware = createSagaMiddleware(),
-    middlewares = [sagaMiddleware],
-    store = createStore(reducers, composeEnhancers(applyMiddleware(...middlewares)));
+  composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose,
+  sagaMiddleware = createSagaMiddleware(),
+  middlewares = [sagaMiddleware],
+  store = createStore(reducers, composeEnhancers(applyMiddleware(...middlewares)));
 
 sagaMiddleware.run(watchSaga);
 
 ReactDOM.render(
-    <Provider store={store}>
-        <BrowserRouter>
-            <App/>
-        </BrowserRouter>
-    </Provider>,
-    document.getElementById('root'));
+  <Provider store={store}>
+    <BrowserRouter>
+      <App/>
+    </BrowserRouter>
+  </Provider>,
+  document.getElementById('root'));
 

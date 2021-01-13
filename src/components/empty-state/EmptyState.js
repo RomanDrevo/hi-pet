@@ -18,8 +18,8 @@ const EmptyState = ({title, description}) => {
         }}
       />
       <div className='empty-state-text'>
-          <div className="title">{title}</div>
-          <div className="description">{description}</div>
+        <div className="title">{title}</div>
+        <div className="description">{description}</div>
       </div>
 
     </div>

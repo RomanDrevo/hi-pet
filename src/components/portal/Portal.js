@@ -13,15 +13,15 @@ class Portal extends Component {
     this.elin.classList.add('portal');
     this.el.appendChild(this.elin);
   }
-  
+
   componentDidMount() {
     portalRoot.appendChild(this.el);
-  };
-  
+  }
+
   componentWillUnmount() {
     portalRoot.removeChild(this.el);
   }
-  
+
   render() {
     const {children} = this.props;
     return ReactDom.createPortal(children, this.el);

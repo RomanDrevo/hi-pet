@@ -28,7 +28,7 @@
     "react/jsx-boolean-value": 1,
     "react/jsx-closing-bracket-location": 0,
     "react/jsx-curly-spacing": 1,
-    "react/jsx-indent-props": [2, "first"],
+    "react/jsx-indent-props": [1, "first"],
     "indent": ["error", 2],
     "import/prefer-default-export": 0,
     "react/jsx-max-props-per-line": 0,
@@ -40,7 +40,7 @@
     "react/jsx-sort-props": 0,
     "react/jsx-uses-vars": 1,
     "react/no-danger": 1,
-    "no-multiple-empty-lines": ["error", { "max": 1, "maxBOF": 1 }],
+    "no-multiple-empty-lines": ["warn", { "max": 1, "maxBOF": 1 }],
     "semi": 1,
     "quotes": ["error", "single", { "allowTemplateLiterals": true }],
     "import/extensions": 0,
@@ -49,16 +49,16 @@
     "no-undef": 0,
     "react/no-did-mount-set-state": 1,
     "react/no-did-update-set-state": 1,
-    "spaced-comment": ["error", "always"],
+    "spaced-comment": ["warn", "always"],
     "prefer-destructuring": [
-      "error",
+      "warn",
       {
         "VariableDeclarator": {
           "object": true
         }
       }
     ],
-    "eqeqeq": ["error", "smart"]
+    "eqeqeq": ["warn", "smart"]
   },
   "extends": ["eslint:recommended", "plugin:react/recommended"],
   "plugins": ["react"],
