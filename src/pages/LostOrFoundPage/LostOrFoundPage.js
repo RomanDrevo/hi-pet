@@ -14,7 +14,7 @@ const LostOrFoundPage = ({history}) => {
 
   const handleOnClick = screen => {
     dispatch(setCurrentScreen(SCREENS[screen]));
-    history.push('/cat-or-dog');
+    history.push('/choose-pet');
   };
   return (
     <div className={style['lost-or-found-page-wrapper']}>

@@ -1,17 +1,17 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import style from './CatOrDogPage.module.scss'
+import style from './CatOrDogPage.module.scss';
 
-const CatOrDogPage = () => {
-  const dispatch = useDispatch();
+const CatOrDogPage = ({history}) => {
+  // const dispatch = useDispatch();
   const handleOnClick = pet => {
     console.log('---pet: ', pet);
-    // dispatch(push('/pet-form'));
+    history.push('/pet-form');
   };
   return (
     <div className={style['cat-or-dog-page-wrapper']}>
-      <div className="cat-or-dog-option" onClick={() => handleOnClick('cat')}>Cat</div>
-      <div className="cat-or-dog-option" onClick={() => handleOnClick('dog')}>Dog</div>
+      <div className="lost-or-found-option" onClick={() => handleOnClick('cat')}>Cat</div>
+      <div className="lost-or-found-option" onClick={() => handleOnClick('dog')}>Dog</div>
     </div>
   );
 };
