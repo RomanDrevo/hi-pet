@@ -8,13 +8,19 @@ export const getNotificationMessage = state => state?.uIStateReducer?.notificati
 
 export const isAuthenticated = state => state.authReducer?.isAuthenticated;
 
-export const getUsers = state => state.usersReducer?.users;
-export const getSearchText = state => state.usersReducer?.searchText;
-export const getSearchResult = createSelector(getUsers, getSearchText, (users, text) => {
-    return users?.filter(user => user.FirstName.toLowerCase().includes(text)
-        || user.LastName.toLowerCase().includes(text));
-
-});
+export const getFoundPets = state => {
+  let petsArr = [];
+  const pets = state.petsReducer?.foundPets;
+  for(let key in pets){
+    petsArr.push(pets[key]);
+  }
+  return petsArr;
+};
+// export const getSearchResult = createSelector(getFoundPets, getSearchText, (users, text) => {
+//     return users?.filter(user => user.FirstName.toLowerCase().includes(text)
+//         || user.LastName.toLowerCase().includes(text));
+//
+// });
 
 export const getErrorObject = state => state?.alertReducer;
 
