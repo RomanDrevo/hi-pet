@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import { withRouter } from 'react-router-dom';
 
-const Navigation = ({currentScreen, history}) =>{
+const Navigation = ({currentFlow, history}) =>{
   useEffect(() => {
     console.log(history);
     const currentLocation = history.location.pathname;
@@ -10,7 +10,7 @@ const Navigation = ({currentScreen, history}) =>{
     // }
   }, []);
   return(
-    <div className='navigation'>{currentScreen}</div>
+    <div className='navigation'>{currentFlow === 'lost' ? 'Found' : currentFlow === 'found' ? 'Lost' : ''} pets</div>
   );
 };
 

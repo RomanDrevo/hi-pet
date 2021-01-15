@@ -18,7 +18,7 @@ const App = ({isErrorWindowOpen, errorObject, toggleErrorWindowIsOpen}) => {
     toggleErrorWindowIsOpen();
   };
 
-  const currentScreen = useSelector(state => getCurrentFlow(state));
+  const currentFlow = useSelector(state => getCurrentFlow(state));
 
   return (
     <div className='app-wrapper'>
@@ -30,9 +30,8 @@ const App = ({isErrorWindowOpen, errorObject, toggleErrorWindowIsOpen}) => {
       />
       <div className="main-page-content">
         {
-          currentScreen && <Navigation currentScreen={currentScreen} />
+          currentFlow && <Navigation currentFlow={currentFlow} />
         }
-
         <Switch>
           <ProtectedRoute path='/' exact component={LostOrFoundPage}/>
           <ProtectedRoute path='/pets' exact component={PetsGridPage}/>
