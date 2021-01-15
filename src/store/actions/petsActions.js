@@ -6,9 +6,22 @@ export const fetchFoundPets = () =>{
   };
 };
 
+export const fetchLostPets = () =>{
+  return{
+    type: types.FETCH_LOST_PETS
+  };
+};
+
 export const setFoundPetsToStore = data  =>{
   return{
     type: types.SET_FOUND_PETS_TO_STORE,
+    payload: data
+  };
+};
+
+export const setLostPetsToStore = data  =>{
+  return{
+    type: types.SET_LOST_PETS_TO_STORE,
     payload: data
   };
 };

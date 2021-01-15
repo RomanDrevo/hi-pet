@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import uIStateReducer from '../reducers/uIStateReducer';
 import authReducer from '../reducers/authReducer';
 import petsReducer from './petsReducer';
-import screensReducer from './screensReducer';
+import flowReducer from './flowReducer';
 import alertReducer from '../reducers/alertReducer';
 
 export default combineReducers({
@@ -10,5 +10,5 @@ export default combineReducers({
   authReducer,
   petsReducer,
   alertReducer,
-  screensReducer
+  flowReducer
 });

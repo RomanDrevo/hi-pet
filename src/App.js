@@ -1,16 +1,16 @@
 import React from 'react';
 import  './css/App.scss';
 import {connect, useSelector} from 'react-redux';
-import {Route, Switch} from 'react-router-dom';
+import {Switch} from 'react-router-dom';
 import ProtectedRoute from './ProtectedRoute';
 import {capitalizeFirstLetter} from './utils/helpers';
 import ModalWindow from './components/modal-window/ModalWindow';
-import {getCurrentScreen, getErrorObject, getIsErrorWindowOpen} from './store/selectors';
+import {getCurrentFlow, getErrorObject, getIsErrorWindowOpen} from './store/selectors';
 import {toggleErrorWindowIsOpen} from './store/actions/uIStateActions';
 import LostOrFoundPage from './pages/lost-or-found-page/LostOrFoundPage';
-import CatOrDogPage from './pages/cat-or-dog-page/CatOrDogPage';
-import FoundPetsPage from './pages/found-pets/FoundPetsPage';
-import Navigation from "./components/navigation/Navigation";
+
+import Navigation from './components/navigation/Navigation';
+import PetsGridPage from './pages/pets-grid-page/PetsGridPage';
 
 const App = ({isErrorWindowOpen, errorObject, toggleErrorWindowIsOpen}) => {
 
@@ -18,7 +18,7 @@ const App = ({isErrorWindowOpen, errorObject, toggleErrorWindowIsOpen}) => {
     toggleErrorWindowIsOpen();
   };
 
-
+  const currentScreen = useSelector(state => getCurrentFlow(state));
 
   return (
     <div className='app-wrapper'>
@@ -29,14 +29,13 @@ const App = ({isErrorWindowOpen, errorObject, toggleErrorWindowIsOpen}) => {
         handleErrorModalCancel={handleErrorModalCancel}
       />
       <div className="main-page-content">
-        {/*{*/}
-        {/*  currentScreen && <Navigation currentScreen={currentScreen} />*/}
-        {/*}*/}
+        {
+          currentScreen && <Navigation currentScreen={currentScreen} />
+        }
 
         <Switch>
           <ProtectedRoute path='/' exact component={LostOrFoundPage}/>
-          <ProtectedRoute path='/choose-pet' exact component={CatOrDogPage}/>
-          <ProtectedRoute path='/found-pets' exact component={FoundPetsPage}/>
+          <ProtectedRoute path='/pets' exact component={PetsGridPage}/>
           {/* <Route path='/login' exact component={LoginPage}/>*/}
         </Switch>
       </div>

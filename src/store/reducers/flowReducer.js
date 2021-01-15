@@ -2,14 +2,14 @@ import actionsTypes from '../actionsTypes';
 import createReducer from './createReducer';
 
 const initialState = {
-  currentScreen: '',
+  flow: ''
 };
 
-const screensReducer = createReducer(initialState, {
-  [actionsTypes.SET_CURRENT_SCREEN]: (state, {payload}) => {
+const flowReducer = createReducer(initialState, {
+  [actionsTypes.SET_CURRENT_FLOW]: (state, {payload}) => {
     return {
       ...state,
-      currentScreen: payload
+      flow: payload
     };
   },
   // [actionsTypes.OPEN_NOTIFICATION]: (state, {payload}) => {
@@ -34,4 +34,4 @@ const screensReducer = createReducer(initialState, {
   // },
 });
 
-export default screensReducer;
+export default flowReducer;

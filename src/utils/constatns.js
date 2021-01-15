@@ -9,9 +9,9 @@ export const NOTIFICATIONS = {
   add: 'User has been added!'
 };
 
-export const SCREENS = {
-  lost: 'Lost',
-  found: 'Found',
+export const FLOWS = {
+  lost: 'lost',
+  found: 'found',
   cat: 'Cat',
   dog: 'Dog'
 };

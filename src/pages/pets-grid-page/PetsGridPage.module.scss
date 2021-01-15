@@ -1,0 +1,40 @@
+.pets-grid-page-wrapper :global{
+  border: 1px solid red;
+  .pets-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 5px 5px;
+    grid-template-areas:
+    ". . . ."
+    ". . . ."
+    ". . . .";
+    .pet-item{
+      width: 250px;
+      height: 150px;
+      border: 1px dashed darkblue;
+      cursor: pointer;
+      img{
+        width: 100%;
+      }
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .pets-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
+      gap: 10px 5px;
+      grid-template-areas:
+    "."
+    "."
+    ".";
+      .pet-item{
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+    }
+  }
+
+}

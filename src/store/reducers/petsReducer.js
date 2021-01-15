@@ -3,6 +3,7 @@ import createReducer from '../reducers/createReducer';
 
 const initialState = {
   foundPets: null,
+  lostPets: null
 };
 
 const petsReducer = createReducer(initialState, {
@@ -10,6 +11,12 @@ const petsReducer = createReducer(initialState, {
     return {
       ...state,
       foundPets: payload
+    };
+  },
+  [actionsTypes.SET_LOST_PETS_TO_STORE]: (state = initialState, {payload}) => {
+    return {
+      ...state,
+      lostPets: payload
     };
   },
 });
