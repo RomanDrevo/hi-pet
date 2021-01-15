@@ -1,3 +1,43 @@
-.lost-cat-wrapper :global{
+.lost-cat-wrapper :global {
+  display: grid;
+  width: 80vw;
+  height: 95vh;
+  position: relative;
+  border: #224a46 1px solid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1.3fr 0.7fr 1fr 0.5fr;
+  gap: 10px 10px;
+  grid-template-areas:
+    "images-layout color-patterns-layout"
+    "where-lost-layout additional-layout"
+    "where-lost-layout additional-layout"
+    "action-layout action-layout";
 
+  .action-layout {
+    background-color: aliceblue;
+    grid-area: action-layout;
+  }
+
+  .images-layout {
+    border: #cf0734 1px solid;
+    grid-area: images-layout;
+  }
+
+  .where-lost-layout {
+    border: #cf0734 1px solid;
+    grid-area: where-lost-layout;
+  }
+
+  .color-patterns-layout {
+    border: #cf0734 1px solid;
+    grid-area: color-patterns-layout;
+  }
+
+  .additional-layout {
+    border: #cf0734 1px solid;
+    grid-area: additional-layout;
+  }
 }
+
+
+
