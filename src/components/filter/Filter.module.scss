@@ -1,0 +1,11 @@
+.pets-filter-wrapper :global{
+  border: 1px solid yellow;
+  width: 330px;
+  padding: 15px;
+  .filter-group{
+    padding: 10px;
+    .filter-group-title{
+      font-size: 18px;
+    }
+  }
+}

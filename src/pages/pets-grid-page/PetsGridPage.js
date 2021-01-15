@@ -4,7 +4,7 @@ import style from './PetsGridPage.module.scss';
 import {fetchFoundPets, fetchLostPets} from '../../store/actions/petsActions';
 import {getCurrentFlow, getFoundPets, getIsLoading, getLostPets} from '../../store/selectors';
 import Spinner from '../../components/spinner';
-import { Checkbox } from 'antd';
+import Filter from '../../components/filter/Filter';
 
 const PetsGridPage = () => {
   const dispatch = useDispatch();
@@ -40,24 +40,11 @@ const PetsGridPage = () => {
     }
   }, [currentFlow]);
 
-  function onChange(checkedValues) {
-    console.log('checked = ', checkedValues);
-  }
-
-  const options = [
-    { label: 'Apple', value: 'Apple' },
-    { label: 'Pear', value: 'Pear' },
-    { label: 'Orange', value: 'Orange' },
-  ];
-
   if(isLoading) return <Spinner />;
 
   return(
     <div className={style['pets-grid-page-wrapper']}>
-      <div className='pets-filter'>
-        <h2>FILTER</h2>
-        <Checkbox.Group options={options} defaultValue={['Pear']} onChange={onChange} />
-      </div>
+      <Filter />
       <div className='pets-grid'>
         {
           foundPets && foundPets.map((pet, i) => (
