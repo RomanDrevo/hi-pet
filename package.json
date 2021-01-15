@@ -13,6 +13,7 @@
     "@types/react-dom": "^17.0.0",
     "antd": "^4.10.2",
     "axios": "^0.21.1",
+    "create-react-component-folder": "^0.3.7",
     "formik": "^2.1.5",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -46,5 +47,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "crcf": [
+    "scss",
+    "cssmodules",
+    "uppercase",
+    "notest"
+  ]
 }

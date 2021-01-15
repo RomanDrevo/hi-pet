@@ -10,13 +10,14 @@ import {toggleErrorWindowIsOpen} from './store/actions/uIStateActions';
 import LostOrFoundPage from './pages/LostOrFoundPage/LostOrFoundPage';
 import CatOrDogPage from './pages/CatOrDogPage/CatOrDogPage';
 import FoundPetsPage from './pages/found-pets/FoundPetsPage';
+import LostCat from './pages/lostCat';
 
 const App = ({isErrorWindowOpen, errorObject, toggleErrorWindowIsOpen}) => {
 
   const handleErrorModalCancel = () => {
     toggleErrorWindowIsOpen();
   };
-
+  
   return (
     <div className={style['app-wrapper']}>
       <ModalWindow
@@ -30,6 +31,7 @@ const App = ({isErrorWindowOpen, errorObject, toggleErrorWindowIsOpen}) => {
           <ProtectedRoute path='/' exact component={LostOrFoundPage}/>
           <ProtectedRoute path='/choose-pet' exact component={CatOrDogPage}/>
           <ProtectedRoute path='/found-pets' exact component={FoundPetsPage}/>
+          <ProtectedRoute path='/lost-cat' exact component={LostCat}/>
           {/* <Route path='/login' exact component={LoginPage}/>*/}
         </Switch>
       </div>

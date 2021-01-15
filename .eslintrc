@@ -51,6 +51,7 @@
     "react/no-did-update-set-state": 1,
     "spaced-comment": ["warn", "always"],
     "no-prototype-builtins": 1,
+    "no-unused-vars": 1,
     "prefer-destructuring": [
       "warn",
       {
