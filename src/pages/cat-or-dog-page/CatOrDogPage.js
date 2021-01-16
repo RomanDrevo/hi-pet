@@ -1,11 +1,15 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import style from './CatOrDogPage.module.scss';
+import {setCurrentFlow} from '../../store/actions/flowActions';
+import {FLOWS} from '../../utils/constatns';
 import {Link} from 'react-router-dom';
 
 const CatOrDogPage = ({history}) => {
-  // const dispatch = useDispatch();
+    console.log(history);
+    const dispatch = useDispatch();
   const handleOnClick = pet => {
-    console.log('---pet: ', pet);
+    dispatch(setCurrentFlow(FLOWS[pet]));
     history.push('/pet-form');
   };
   return (

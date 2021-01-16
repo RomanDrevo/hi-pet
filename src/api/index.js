@@ -11,6 +11,10 @@ axios.interceptors.request.use(function (config) {
 });
 
 export const fetchLostPetsApi = () => {
+  return axios.get('/lost.json');
+};
+
+export const fetchFoundPetsApi = () => {
   return axios.get('/found.json');
 };
 

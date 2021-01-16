@@ -3,6 +3,8 @@ export const getNotificationMessage = state => state?.uIStateReducer?.notificati
 
 export const isAuthenticated = state => state.authReducer?.isAuthenticated;
 
+export const getCurrentFlow = state => state.flowReducer?.flow;
+
 export const getFoundPets = state => {
   let petsArr = [];
   const pets = state.petsReducer?.foundPets;
@@ -11,6 +13,16 @@ export const getFoundPets = state => {
   }
   return petsArr;
 };
+
+export const getLostPets = state => {
+  let petsArr = [];
+  const pets = state.petsReducer?.lostPets;
+  for(let key in pets){
+    petsArr.push(pets[key]);
+  }
+  return petsArr;
+};
+
 // export const getSearchResult = createSelector(getFoundPets, getSearchText, (users, text) => {
 //     return users?.filter(user => user.FirstName.toLowerCase().includes(text)
 //         || user.LastName.toLowerCase().includes(text));

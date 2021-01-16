@@ -1,25 +1,27 @@
 import React from 'react';
-import style from './css/App.scss';
-import {connect} from 'react-redux';
+import  './css/App.scss';
+import {connect, useSelector} from 'react-redux';
 import {Switch} from 'react-router-dom';
 import ProtectedRoute from './ProtectedRoute';
 import {capitalizeFirstLetter} from './utils/helpers';
 import ModalWindow from './components/modal-window/ModalWindow';
-import {getErrorObject, getIsErrorWindowOpen} from './store/selectors';
+import {getCurrentFlow, getErrorObject, getIsErrorWindowOpen} from './store/selectors';
 import {toggleErrorWindowIsOpen} from './store/actions/uIStateActions';
-import LostOrFoundPage from './pages/LostOrFoundPage/LostOrFoundPage';
-import CatOrDogPage from './pages/CatOrDogPage/CatOrDogPage';
-import FoundPetsPage from './pages/found-pets/FoundPetsPage';
+import LostOrFoundPage from './pages/lost-or-found-page/LostOrFoundPage';
 import LostCat from './pages/lostCat';
+import Navigation from './components/navigation/Navigation';
+import PetsGridPage from './pages/pets-grid-page/PetsGridPage';
 
 const App = ({isErrorWindowOpen, errorObject, toggleErrorWindowIsOpen}) => {
 
   const handleErrorModalCancel = () => {
     toggleErrorWindowIsOpen();
   };
-  
+
+  const currentFlow = useSelector(state => getCurrentFlow(state));
+
   return (
-    <div className={style['app-wrapper']}>
+    <div className='app-wrapper'>
       <ModalWindow
         visible={isErrorWindowOpen}
         title={capitalizeFirstLetter(errorObject.title)}
@@ -27,12 +29,13 @@ const App = ({isErrorWindowOpen, errorObject, toggleErrorWindowIsOpen}) => {
         handleErrorModalCancel={handleErrorModalCancel}
       />
       <div className="main-page-content">
+        {
+          currentFlow && <Navigation currentFlow={currentFlow} />
+        }
         <Switch>
           <ProtectedRoute path='/' exact component={LostOrFoundPage}/>
-          <ProtectedRoute path='/choose-pet' exact component={CatOrDogPage}/>
-          <ProtectedRoute path='/found-pets' exact component={FoundPetsPage}/>
-          <ProtectedRoute path='/lost-cat' exact component={LostCat}/>
-          {/* <Route path='/login' exact component={LoginPage}/>*/}
+          <ProtectedRoute path='/pets' exact component={PetsGridPage}/>
+          <ProtectedRoute path='/lost-cat' exact component={LostCat}/>          {/* <Route path='/login' exact component={LoginPage}/>*/}
         </Switch>
       </div>
     </div>

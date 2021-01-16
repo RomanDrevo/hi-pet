@@ -1,20 +1,21 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-// import { setCurrentScreen } from '../../../store/actions/screensActions';
+// import { setCurrentFlow } from '../../../store/actions/screensActions';
 import style from './LostOrFoundPage.module.scss';
-import {setCurrentScreen} from '../../store/actions/screensActions';
-
-const SCREENS = {
-  lost: 'Lost',
-  found: 'Found',
-};
+import {setCurrentFlow} from '../../store/actions/flowActions';
+import {FLOWS} from '../../utils/constatns';
 
 const LostOrFoundPage = ({history}) => {
   const dispatch = useDispatch();
 
-  const handleOnClick = screen => {
-    dispatch(setCurrentScreen(SCREENS[screen]));
-    history.push('/choose-pet');
+  const handleOnClick = flow => {
+    dispatch(setCurrentFlow(FLOWS[flow]));
+    if(flow === 'found'){
+      history.push('/pets');
+    }
+    else if(flow === 'lost'){
+      history.push('/pets-form');
+    }
   };
   return (
     <div className={style['lost-or-found-page-wrapper']}>
