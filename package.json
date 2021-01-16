@@ -53,5 +53,8 @@
     "cssmodules",
     "uppercase",
     "notest"
-  ]
+  ],
+  "devDependencies": {
+    "antd-img-crop": "^3.13.2"
+  }
 }
