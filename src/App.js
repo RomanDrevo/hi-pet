@@ -35,7 +35,8 @@ const App = ({isErrorWindowOpen, errorObject, toggleErrorWindowIsOpen}) => {
         <Switch>
           <ProtectedRoute path='/' exact component={LostOrFoundPage}/>
           <ProtectedRoute path='/pets' exact component={PetsGridPage}/>
-          <ProtectedRoute path='/lost-cat' exact component={LostCat}/>          {/* <Route path='/login' exact component={LoginPage}/>*/}
+          <ProtectedRoute path='/pets-form' exact component={LostCat}/>
+          {/* <Route path='/login' exact component={LoginPage}/>*/}
         </Switch>
       </div>
     </div>

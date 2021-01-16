@@ -15,7 +15,7 @@ const CatOrDogPage = ({history}) => {
   return (
     <div className={style['cat-or-dog-page-wrapper']}>
       <Link
-        to="/lost-cat"
+        to="/pets-form"
         className="lost-or-found-option">Cat</Link>
       <div className="lost-or-found-option" onClick={() => handleOnClick('dog')}>Dog</div>
     </div>
