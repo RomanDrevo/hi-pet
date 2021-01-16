@@ -3,7 +3,8 @@ import createReducer from '../reducers/createReducer';
 
 const initialState = {
   foundPets: null,
-  lostPets: null
+  lostPets: null,
+  uploadedImgList: []
 };
 
 const petsReducer = createReducer(initialState, {
@@ -17,6 +18,12 @@ const petsReducer = createReducer(initialState, {
     return {
       ...state,
       lostPets: payload
+    };
+  },
+  [actionsTypes.SET_UPLOADED_IMG]: (state = initialState, {payload}) => {
+    return {
+      ...state,
+      uploadedImgList: payload
     };
   },
 });

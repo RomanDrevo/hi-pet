@@ -25,3 +25,10 @@ export const setLostPetsToStore = data  =>{
     payload: data
   };
 };
+
+export const setUploadedImg = data  =>{
+  return{
+    type: types.SET_UPLOADED_IMG,
+    payload: data
+  };
+};

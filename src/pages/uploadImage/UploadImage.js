@@ -1,12 +1,16 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Upload} from 'antd';
 import ImgCrop from 'antd-img-crop';
+import {useDispatch, useSelector} from 'react-redux';
+import {setUploadedImg} from '../../store/actions/petsActions';
+import {getListOfUploadedImgs} from '../../store/selectors';
 
-const UploadImage = (props) => {
-  const [fileList, setFileList] = useState([]);
+const UploadImage = () => {
+  const dispatch = useDispatch();
+  const fileList = useSelector((state) => getListOfUploadedImgs(state));
   
   const onChange = ({fileList: newFileList}) => {
-    setFileList(newFileList);
+    dispatch(setUploadedImg(newFileList));
   };
   
   const onPreview = async file => {

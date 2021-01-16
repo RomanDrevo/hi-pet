@@ -3,10 +3,9 @@ import { createSelector } from 'reselect';
 export const getIsLoading = state => state.uIStateReducer?.isLoading;
 export const getIsErrorWindowOpen = state => state?.uIStateReducer?.isErrorWindowOpen;
 export const getNotificationMessage = state => state?.uIStateReducer?.notificationMessage;
-
 export const isAuthenticated = state => state.authReducer?.isAuthenticated;
-
 export const getCurrentFlow = state => state.flowReducer?.flow;
+export const getListOfUploadedImgs = state => state.petsReducer?.uploadedImgList;
 
 export const getFoundPets = state => {
   let petsArr = [];
