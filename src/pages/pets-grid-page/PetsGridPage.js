@@ -5,8 +5,9 @@ import {fetchFoundPets, fetchLostPets} from '../../store/actions/petsActions';
 import {getCurrentFlow, getFoundPets, getIsLoading, getLostPets} from '../../store/selectors';
 import Spinner from '../../components/spinner';
 import Filter from '../../components/filter/Filter';
+import {parseQuery} from '../../utils/helpers';
 
-const PetsGridPage = () => {
+const PetsGridPage = ({history}) => {
   const dispatch = useDispatch();
 
   const foundPets = useSelector((state) => getFoundPets(state));
@@ -23,12 +24,7 @@ const PetsGridPage = () => {
   console.log('-petsArr: ', petsArr);
 
   useEffect(() => {
-    if(foundPets){
-      setPetsArr(foundPets);
-    }
-    else if(lostPets){
-      setPetsArr(lostPets);
-    }
+    console.log(parseQuery(history.location.search));
   }, []);
 
   useEffect(() => {
