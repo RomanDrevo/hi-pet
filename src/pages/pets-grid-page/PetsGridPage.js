@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import style from './PetsGridPage.module.scss';
 import {fetchFoundPets, fetchLostPets} from '../../store/actions/petsActions';
-import {getCurrentFlow, getFoundPets, getIsLoading, getLostPets} from '../../store/selectors';
+import {filteredLostPets, getFoundPets, getIsLoading, getLostPets} from '../../store/selectors';
 import Spinner from '../../components/spinner';
 import Filter from '../../components/filter/Filter';
 import {parseQuery} from '../../utils/helpers';
@@ -11,30 +11,18 @@ const PetsGridPage = ({history}) => {
   const dispatch = useDispatch();
 
   const foundPets = useSelector((state) => getFoundPets(state));
-  const lostPets = useSelector((state) => getLostPets(state));
-  const currentFlow = useSelector((state) => getCurrentFlow(state));
+  const lostPets = useSelector((state) => filteredLostPets(state));
   const isLoading = useSelector((state) => getIsLoading(state));
 
-  console.log('-foundPets: ', foundPets);
-  console.log('-lostPets: ', lostPets);
-  console.log('-currentFlow: ', currentFlow);
-
-  const [petsArr, setPetsArr] = useState([]);
-
-  console.log('-petsArr: ', petsArr);
-
   useEffect(() => {
-    console.log(parseQuery(history.location.search));
-  }, []);
-
-  useEffect(() => {
-    if(currentFlow === 'lost'){
+    const {flow} = parseQuery(history.location.search);
+    if(flow === 'lost'){
       dispatch(fetchFoundPets());
     }
-    else if(currentFlow === 'found'){
+    else if(flow === 'found'){
       dispatch(fetchLostPets());
     }
-  }, [currentFlow]);
+  }, []);
 
   if(isLoading) return <Spinner />;
 

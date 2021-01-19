@@ -8,8 +8,6 @@ export const getNotificationMessage = state => state?.uIStateReducer?.notificati
 
 export const isAuthenticated = state => state.authReducer?.isAuthenticated;
 
-export const getCurrentFlow = state => state.flowReducer?.flow;
-
 export const getFoundPets = state => {
   let petsArr = [];
   const pets = state.petsReducer?.foundPets;
@@ -28,11 +26,45 @@ export const getLostPets = state => {
   return petsArr;
 };
 
-// export const getSearchResult = createSelector(getFoundPets, getSearchText, (users, text) => {
-//     return users?.filter(user => user.FirstName.toLowerCase().includes(text)
-//         || user.LastName.toLowerCase().includes(text));
-//
-// });
+// filters
+const getFilterPetType = state => state.filtersReducer?.petType;
+const getFilterPetColor = state => state.filtersReducer?.color;
+
+const getAppliedFilters = createSelector(
+  getFilterPetType,
+  getFilterPetColor,
+  (
+    petType,
+    color,
+
+  ) => {
+    const filters = {
+      ...(petType.length && {
+        petType: item => petType.some(filter => item.pet === filter)
+      }),
+      ...(color.length && {
+        color: item => color.some(filter => item.color === filter)
+      }),
+    };
+
+    return filters;
+  }
+);
+
+export const filteredLostPets = createSelector(
+  getLostPets,
+  getAppliedFilters,
+  (data, appliedFilters) => {
+    const filtersArray = Object.keys(appliedFilters).map(key => {
+      return appliedFilters[key];
+    });
+
+    return data.filter(item => {
+      return filtersArray.every(filter => filter(item));
+    });
+
+  }
+);
 
 export const getErrorObject = state => state?.alertReducer;
 
