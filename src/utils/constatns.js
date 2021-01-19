@@ -16,3 +16,14 @@ export const FLOWS = {
   dog: 'Dog'
 };
 
+export const petOptions = [
+  { label: 'Dog', value: 'dog' },
+  { label: 'Cat', value: 'cat' },
+];
+
+export const colorOptions = [
+  { label: 'Black', value: 'black' },
+  { label: 'White', value: 'white' },
+  { label: 'Ginger', value: 'ginger' },
+];
+
