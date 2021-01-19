@@ -1,14 +1,13 @@
 import React from 'react';
-import {useDispatch} from "react-redux";
+import {useDispatch} from 'react-redux';
 
 const PetFormPage = () => {
 
-
-    return(
-        <div className='pet-form-page'>
+  return(
+    <div className='pet-form-page'>
             Pet Form
-        </div>
-    )
-}
+    </div>
+  );
+};
 
 export default PetFormPage;

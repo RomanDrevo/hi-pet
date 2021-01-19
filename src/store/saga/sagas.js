@@ -10,7 +10,7 @@ import {setAlert} from '../actions/alertActions';
 export function* fetchFoundPetsSaga() {
   try {
     yield put(setLoading(true));
-    const response = yield call(fetchLostPetsApi);
+    const response = yield call(fetchFoundPetsApi);
 
     if (response.status === 200 && response.data) {
       yield put(setFoundPetsToStore(response.data));
@@ -34,7 +34,7 @@ export function* fetchFoundPetsSaga() {
 export function* fetchLostPetsSaga() {
   try {
     yield put(setLoading(true));
-    const response = yield call(fetchFoundPetsApi);
+    const response = yield call(fetchLostPetsApi);
 
     if (response.status === 200 && response.data) {
       yield put(setLostPetsToStore(response.data));
