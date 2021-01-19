@@ -24,17 +24,15 @@ const PetsGridPage = ({history}) => {
   console.log('-petsArr: ', petsArr);
 
   useEffect(() => {
+    const {flow} = parseQuery(history.location.search);
     console.log(parseQuery(history.location.search));
-  }, []);
-
-  useEffect(() => {
-    if(currentFlow === 'lost'){
+    if(flow === 'lost'){
       dispatch(fetchFoundPets());
     }
-    else if(currentFlow === 'found'){
+    else if(flow === 'found'){
       dispatch(fetchLostPets());
     }
-  }, [currentFlow]);
+  }, []);
 
   if(isLoading) return <Spinner />;
 

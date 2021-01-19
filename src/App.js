@@ -29,9 +29,7 @@ const App = ({isErrorWindowOpen, errorObject, toggleErrorWindowIsOpen}) => {
         handleErrorModalCancel={handleErrorModalCancel}
       />
       <div className="main-page-content">
-        {
-          currentFlow && <Navigation currentFlow={currentFlow} />
-        }
+        <Navigation />
         <Switch>
           <ProtectedRoute path='/' exact component={LostOrFoundPage}/>
           <ProtectedRoute path='/pets' exact component={PetsGridPage}/>
