@@ -1,11 +1,11 @@
 import React from 'react';
 import  './css/App.scss';
-import {connect, useSelector} from 'react-redux';
+import {connect} from 'react-redux';
 import {Switch} from 'react-router-dom';
 import ProtectedRoute from './ProtectedRoute';
 import {capitalizeFirstLetter} from './utils/helpers';
 import ModalWindow from './components/modal-window/ModalWindow';
-import {getCurrentFlow, getErrorObject, getIsErrorWindowOpen} from './store/selectors';
+import {getErrorObject, getIsErrorWindowOpen} from './store/selectors';
 import {toggleErrorWindowIsOpen} from './store/actions/uIStateActions';
 import LostOrFoundPage from './pages/lost-or-found-page/LostOrFoundPage';
 
@@ -17,8 +17,6 @@ const App = ({isErrorWindowOpen, errorObject, toggleErrorWindowIsOpen}) => {
   const handleErrorModalCancel = () => {
     toggleErrorWindowIsOpen();
   };
-
-  const currentFlow = useSelector(state => getCurrentFlow(state));
 
   return (
     <div className='app-wrapper'>

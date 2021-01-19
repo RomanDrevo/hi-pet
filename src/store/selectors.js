@@ -8,8 +8,6 @@ export const getNotificationMessage = state => state?.uIStateReducer?.notificati
 
 export const isAuthenticated = state => state.authReducer?.isAuthenticated;
 
-export const getCurrentFlow = state => state.flowReducer?.flow;
-
 export const getFoundPets = state => {
   let petsArr = [];
   const pets = state.petsReducer?.foundPets;
