@@ -1,11 +1,11 @@
 import React from 'react';
 import  './css/App.scss';
-import {connect, useSelector} from 'react-redux';
+import {connect} from 'react-redux';
 import {Switch} from 'react-router-dom';
 import ProtectedRoute from './ProtectedRoute';
 import {capitalizeFirstLetter} from './utils/helpers';
 import ModalWindow from './components/modal-window/ModalWindow';
-import {getCurrentFlow, getErrorObject, getIsErrorWindowOpen} from './store/selectors';
+import {getErrorObject, getIsErrorWindowOpen} from './store/selectors';
 import {toggleErrorWindowIsOpen} from './store/actions/uIStateActions';
 import LostOrFoundPage from './pages/lost-or-found-page/LostOrFoundPage';
 import LostCat from './pages/lostCat';
@@ -18,8 +18,6 @@ const App = ({isErrorWindowOpen, errorObject, toggleErrorWindowIsOpen}) => {
     toggleErrorWindowIsOpen();
   };
 
-  const currentFlow = useSelector(state => getCurrentFlow(state));
-
   return (
     <div className='app-wrapper'>
       <ModalWindow
@@ -29,9 +27,7 @@ const App = ({isErrorWindowOpen, errorObject, toggleErrorWindowIsOpen}) => {
         handleErrorModalCancel={handleErrorModalCancel}
       />
       <div className="main-page-content">
-        {
-          currentFlow && <Navigation currentFlow={currentFlow} />
-        }
+        <Navigation />
         <Switch>
           <ProtectedRoute path='/' exact component={LostOrFoundPage}/>
           <ProtectedRoute path='/pets' exact component={PetsGridPage}/>

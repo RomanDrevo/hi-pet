@@ -1,16 +1,20 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import { withRouter } from 'react-router-dom';
+import {parseQuery} from '../../utils/helpers';
 
-const Navigation = ({currentFlow, history}) =>{
+const Navigation = ({ history}) =>{
+  const [title, setTitle] = useState('');
   useEffect(() => {
-    console.log(history);
-    const currentLocation = history.location.pathname;
-    // switch (currentLocation){
-    //   case "":
-    // }
+    const {flow} = parseQuery(history.location.search);
+    if(flow === 'found'){
+      setTitle('Lost pets');
+    }
+    else if(flow === 'lost'){
+      setTitle('Found pets');
+    }
   }, []);
   return(
-    <div className='navigation'>{currentFlow === 'lost' ? 'Found' : currentFlow === 'found' ? 'Lost' : ''} pets</div>
+    <div className='navigation'>{title}</div>
   );
 };
 

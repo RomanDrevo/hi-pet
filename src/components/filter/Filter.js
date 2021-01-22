@@ -1,35 +1,24 @@
 import React from 'react';
 import {Checkbox} from 'antd';
 import style from './Filter.module.scss';
-
-const petOptions = [
-  { label: 'Apple', value: 'Apple' },
-  { label: 'Pear', value: 'Pear' },
-];
-
-const colorOptions = [
-  { label: 'Black', value: 'black' },
-  { label: 'White', value: 'white' },
-  { label: 'Ginger', value: 'ginger' },
-];
+import {useDispatch} from 'react-redux';
+import {setFilterPetColor, setFilterPetType} from '../../store/actions/filtertsActions';
+import {colorOptions, petOptions} from '../../utils/constatns';
 
 const Filter = () => {
-  function onChange(checkedValues) {
-    console.log('checked = ', checkedValues);
-  }
+  const dispatch = useDispatch();
   return(
     <div className={style['pets-filter-wrapper']}>
       <h2>FILTER</h2>
       <div className='filter-group'>
         <div className='filter-group-title'>Pet:</div>
-        <Checkbox.Group options={petOptions} onChange={onChange} />
+        <Checkbox.Group options={petOptions} onChange={petType => dispatch(setFilterPetType(petType))} />
       </div>
 
       <div className='filter-group'>
         <div className='filter-group-title'>Color:</div>
-        <Checkbox.Group options={colorOptions} onChange={onChange} />
+        <Checkbox.Group options={colorOptions} onChange={color => dispatch(setFilterPetColor(color))} />
       </div>
-
     </div>
   );
 };
