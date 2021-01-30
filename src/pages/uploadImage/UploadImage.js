@@ -1,44 +1,45 @@
 import React from 'react';
-import {Upload} from 'antd';
-import ImgCrop from 'antd-img-crop';
 import {useDispatch, useSelector} from 'react-redux';
-import {setUploadedImg} from '../../store/actions/petsActions';
 import {getListOfUploadedImgs} from '../../store/selectors';
+import styles from './UploadImage.module.scss';
+import {removeUploadedImg, setUploadedImg} from '../../store/actions/petsActions';
+import ImgCrop from 'antd-img-crop';
+import {Button, Upload} from 'antd';
+import {UploadOutlined} from '@ant-design/icons';
 
 const UploadImage = () => {
   const dispatch = useDispatch();
   const fileList = useSelector((state) => getListOfUploadedImgs(state));
-  
-  const onChange = ({fileList: newFileList}) => {
-    dispatch(setUploadedImg(newFileList));
-  };
-  
-  const onPreview = async file => {
-    let src = file.url;
-    if (!src) {
-      src = await new Promise(resolve => {
-        const reader = new FileReader();
-        reader.readAsDataURL(file.originFileObj);
-        reader.onload = () => resolve(reader.result);
-      });
-    }
-    const image = new Image();
-    image.src = src;
-    const imgWindow = window.open(src);
-    imgWindow.document.write(image.outerHTML);
+  const props = {
+    onRemove: file => {
+      dispatch(removeUploadedImg(file));
+    },
+    beforeUpload: file => {
+      const reader = new FileReader();
+      reader.onload = function () {
+        file.preview = reader.result;
+        dispatch(setUploadedImg(file));
+      };
+      reader.readAsDataURL(file);
+      return false;
+    },
+    fileList,
   };
   return (
-    <div>
+    <div className={styles['upload-wrapper']}>
       <ImgCrop rotate>
         <Upload
-          listType="picture-card"
-          fileList={fileList}
-          onChange={onChange}
-          onPreview={onPreview}
+          {...props}
         >
-          {fileList.length < 5 && '+ UploadImage'}
+          <Button icon={<UploadOutlined/>}>Select File</Button>
         </Upload>
       </ImgCrop>
+      {fileList.map((file, ind) => {
+        return (
+          <img key={ind} src={file.preview} alt={file.name}/>
+        );
+      })
+      }
     </div>
   );
 };

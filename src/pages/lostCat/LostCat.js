@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './LostCat.module.scss';
 import UploadImage from '../uploadImage';
 
-const LostCat = (props) => {
+const LostCat = () => {
   return (
     <div className={styles['lost-cat-wrapper']}>
       <div className="action-layout" />

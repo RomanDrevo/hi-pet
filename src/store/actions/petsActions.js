@@ -32,3 +32,10 @@ export const setUploadedImg = data  =>{
     payload: data
   };
 };
+
+export const removeUploadedImg = data  =>{
+  return{
+    type: types.REMOVE_UPLOADED_IMG,
+    payload: data
+  };
+};

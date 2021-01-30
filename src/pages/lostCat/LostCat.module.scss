@@ -4,7 +4,7 @@
   height: 95vh;
   position: relative;
   border: #224a46 1px solid;
-  grid-template-columns: 1.3fr 0.7fr;
+  grid-template-columns: 1fr 1fr;
   grid-template-rows: 1.3fr 0.7fr 1fr 0.5fr;
   gap: 0 0;
   grid-template-areas:
@@ -19,7 +19,10 @@
   }
 
   .images-layout {
-    border: #cf0734 1px solid;
+    display: flex;
+    width: content-box;
+    background-color: #f2fff0;
+    border: #07cf28 1px solid;
     grid-area: images-layout;
   }
 
